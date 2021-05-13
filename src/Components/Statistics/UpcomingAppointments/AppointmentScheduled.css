@@ -1,0 +1,19 @@
+.message-header{
+    color: #EDEDED;
+}
+.card-header.has-background-white-bis{
+    transition: all 0.3s ease-out;
+    transform: translateY(-5px) scale(1.000) translateZ(0);
+}
+
+li{
+    list-style-type: none;
+    width: 100%;
+}
+a{
+    text-decoration: none
+}
+.menu-label.is-size-4.has-text-weight-bold.has-text-grey-darker{
+    border-right: 4px solid hsl(217, 71%, 45%);
+}
+

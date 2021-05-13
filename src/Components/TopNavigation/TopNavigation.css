@@ -1,0 +1,6 @@
+.navbar{
+    background-color: transparent;
+}
+.navbar.my-4.px-6{
+    border-bottom: 3px solid #F1F1F1
+}

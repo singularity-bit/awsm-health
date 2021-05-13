@@ -1,0 +1,25 @@
+.sidebar{
+
+    position: static;
+}
+.menu-list{
+    position: relative;
+    padding-top: 3rem;
+    width: 100%;
+    height: 100%;
+    
+}
+@media only screen and (max-width: 600px) {
+    .is-mobile{
+        
+    }
+}
+
+
+.has-text-weight-bold{
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+
