@@ -8,8 +8,9 @@ import SelectDate from './SelectDate'
 import {UserContext} from '../../UserContext'
 import moment from 'moment'
 import axios from 'axios'
+import { useHistory } from "react-router-dom";
 function NewAppointment() {
-
+    const history = useHistory();
     const userType=useContext(UserContext)
 
     
@@ -45,16 +46,7 @@ function NewAppointment() {
             const splitName=selectSpecialist.split(' ');
             const nume=splitName[0];
             const prenume=splitName[1];
-            console.log({
-                title:savedDate[0].title,
-                status:"active",
-                nume_medic:nume,
-                prenume_medic:prenume,
-                nume_pacient:pacientNume,
-                prenume_pacient:pacientPrenume,
-                start_date:formatedDateSQLstart_date,
-                end_date:formatedDateSQLend_date
-            })
+
             axios.post('https://powerful-brushlands-81010.herokuapp.com/make-appointment',{
                 title:savedDate[0].title,
                 status:"active",
@@ -64,20 +56,15 @@ function NewAppointment() {
                 prenume_pacient:pacientPrenume,
                 start_date:formatedDateSQLstart_date,
                 end_date:formatedDateSQLend_date
-            }).then(res=>console.log("response from serv",res.data))
+            }).then(res=>{
+                if(res.status>=200& res.status<300){
+                    history.push("/");
+                }
+            })
         }else if(userType?.user_type==='pacient'){
             const splitName=selectSpecialist.split(' ');
             const nume=splitName[0];
             const prenume=splitName[1];
-            console.log({
-                title:savedDate[0].title,
-                status:"active",
-                nume_medic:nume,
-                prenume_medic:prenume,
-                id_pacient:userType.id,
-                start_date:formatedDateSQLstart_date,
-                end_date:formatedDateSQLend_date
-            })
             axios.post('https://powerful-brushlands-81010.herokuapp.com/make-appointment',{
                 title:savedDate[0].title,
                 status:"active",
@@ -86,9 +73,12 @@ function NewAppointment() {
                 id_pacient:userType.id,
                 start_date:formatedDateSQLstart_date,
                 end_date:formatedDateSQLend_date
-            }).then(res=>console.log("response from serv",res.data))
-        }
-       
+            }).then(res=>{
+                if(res.status>=200& res.status<300){
+                    history.push("/");
+                }
+            })
+        }      
     }
 
     useEffect(()=>{

@@ -1,9 +1,11 @@
-import React,{useState,useEffect, useRef} from 'react'
+import React,{useState,useEffect, useContext} from 'react'
 import './AppointmentScheduled.css'
 import axios from 'axios'
+import {UserContext} from '../../../UserContext'
 function AppointmentScheduled(props) {
     //props
     const {data,result}=props;
+    const userType=useContext(UserContext)
                 
     const options = { month: 'long', day: 'numeric' };
     const optionsHour={hour:'numeric',minute: 'numeric'}
@@ -52,7 +54,9 @@ function AppointmentScheduled(props) {
                         </div>
                         <div className="container">
                             <a className="is-pulled-right pl-5 has-text-danger" onClick={()=>onchangeStatus(id,'canceled')}><i class="far fa-calendar-times fa-2x "></i></a>
-                            <a className="is-pulled-right pr-5 has-text-success" onClick={()=>onchangeStatus(id,'finished')}><i class="fas fa-check fa-2x"></i></a>                               
+                            
+                            {userType.user_type==='admin'&&
+                                <a className="is-pulled-right pr-5 has-text-success" onClick={()=>onchangeStatus(id,'finished')}><i class="fas fa-check fa-2x"></i></a>}                               
                         </div>
                         
                     </div>

@@ -24,9 +24,9 @@ export default function TopNavigation(props) {
                         </div>
                         
                     </div>
-                            <i className="ml-6 mt-4 fas fa-sign-out-alt fa-2x  is-clickable" onClick={()=>{
+                            <i className="ml-6 mt-5 fas fa-sign-out-alt fa-2x  is-clickable" onClick={()=>{
                                 setSignedIn(!isSignedIn)
-                            }}></i>
+                            }} style={{color:'hsl(217, 71%, 53%)'}}></i>
                 </div>
             </div>
             

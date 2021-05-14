@@ -26,7 +26,7 @@ function App() {
     console.log("signed",isSignedIn)
   },[isSignedIn])
     return (
-      <div className="App">
+      <div className="App ">
         {
           isSignedIn &route==='/'
           ?
