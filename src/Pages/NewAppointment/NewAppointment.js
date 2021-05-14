@@ -45,7 +45,16 @@ function NewAppointment() {
             const splitName=selectSpecialist.split(' ');
             const nume=splitName[0];
             const prenume=splitName[1];
-            
+            console.log({
+                title:savedDate[0].title,
+                status:"active",
+                nume_medic:nume,
+                prenume_medic:prenume,
+                nume_pacient:pacientNume,
+                prenume_pacient:pacientPrenume,
+                start_date:formatedDateSQLstart_date,
+                end_date:formatedDateSQLend_date
+            })
             axios.post('https://powerful-brushlands-81010.herokuapp.com/make-appointment',{
                 title:savedDate[0].title,
                 status:"active",
@@ -60,13 +69,21 @@ function NewAppointment() {
             const splitName=selectSpecialist.split(' ');
             const nume=splitName[0];
             const prenume=splitName[1];
+            console.log({
+                title:savedDate[0].title,
+                status:"active",
+                nume_medic:nume,
+                prenume_medic:prenume,
+                id_pacient:userType.id,
+                start_date:formatedDateSQLstart_date,
+                end_date:formatedDateSQLend_date
+            })
             axios.post('https://powerful-brushlands-81010.herokuapp.com/make-appointment',{
                 title:savedDate[0].title,
                 status:"active",
                 nume_medic:nume,
                 prenume_medic:prenume,
-                nume_pacient:userType.nume_pacient,
-                prenume_pacient:userType.prenume_pacient,
+                id_pacient:userType.id,
                 start_date:formatedDateSQLstart_date,
                 end_date:formatedDateSQLend_date
             }).then(res=>console.log("response from serv",res.data))

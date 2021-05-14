@@ -40,14 +40,25 @@ function Statistics(props) {
                             <div className='tile'>
                                     <div className="tile is-parent ">
                                         <article className="tile is-child box">
-                                        <p className="subtitle has-text-grey-light">Total specialists</p>
-                                        <p className="title" >{nrOfSpecialists}</p>
+                                            <div className="is-flex is-justify-content-space-between">
+                                                <div className=''>
+                                                    <p className="subtitle has-text-grey-light">Total specialists</p>
+                                                    <p className="title" >{nrOfSpecialists}</p>
+                                                </div>
+                                                <figure className="fas fa-user-md fa-4x is-hidden-touch" style={{color:`#5893FF`}}></figure>  
+                                            </div>
+                                        
                                         </article>
                                     </div>
                                     <div className="tile is-parent">
-                                        <article className="tile is-child box">
-                                        <p className="subtitle has-text-grey-light">Total completed visits</p>
-                                        <p className="title">{nrOfVisits}</p>
+                                        <article className="tile is-child box">                                       
+                                        <div className="is-flex is-justify-content-space-between">
+                                                <div className=''>
+                                                <p className="subtitle has-text-grey-light">Total completed visits</p>
+                                                <p className="title">{nrOfVisits}</p>
+                                                </div>
+                                                <figure className="fas fa-hospital-user fa-4x is-hidden-touch" style={{color:`#FF61B2`}}></figure>  
+                                            </div>
                                         </article>
                                     </div>
                                     <div className="tile is-parent">
@@ -57,7 +68,7 @@ function Statistics(props) {
                                                         <p className="subtitle has-text-grey-light">Total patients</p>  
                                                         <p className="title">{nrOfPatients}</p>
                                                     </div>
-                                                    <figure className="fas fa-users fa-4x is-hidden-touch"></figure>           
+                                                    <figure className="fas fa-users fa-4x is-hidden-touch" style={{color:`#FFB36A`}}></figure>           
                                                 </div>                                                                 
                                         </article>
                                     </div>

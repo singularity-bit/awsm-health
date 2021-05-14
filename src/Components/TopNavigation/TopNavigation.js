@@ -15,10 +15,10 @@ export default function TopNavigation(props) {
             <div className='navbar-menu '>
                 <div className='navbar-end  block'>
                     <div className='navbar-item is-spaced'>
-                        <div className='field is-grouped '>
-                            <i className="pt-1 mx-3 fas fa-user-circle fa-3x "></i>
+                        <div className='field is-grouped userArea'>
+                            <i className=" mr-3 fas fa-user-circle fa-3x "></i>
                             <div className="">
-                            <h1 className="title is-4">{Object.values(userType)[3]} {Object.values(userType)[4]}</h1>
+                            <h1 className="title is-6">{Object.values(userType)[3]} {Object.values(userType)[4]}</h1>
                             <p className="subtitle is-6">{Object.values(userType)[2]}</p>
                             </div>       
                         </div>

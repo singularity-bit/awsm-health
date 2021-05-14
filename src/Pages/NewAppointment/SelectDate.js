@@ -110,7 +110,6 @@ export default function SelectDate(props) {
 
 
   return (
-            data.length>0?
             <React.Fragment>
         
             <Scheduler
@@ -153,7 +152,6 @@ export default function SelectDate(props) {
 
             </Scheduler>
         </React.Fragment>
-        :<>loading ..</>
         
     );
 };
