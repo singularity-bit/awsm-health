@@ -40,24 +40,41 @@ function NewAppointment() {
     }
 
     const onMakeAppointment=()=>{
-        const splitName=selectSpecialist.split(' ');
-        const nume=splitName[0];
-        const prenume=splitName[1];
 
-        axios.post('https://powerful-brushlands-81010.herokuapp.com/make-appointment',{
-            title:savedDate[0].title,
-            status:'active',
-            nume_medic:nume,
-            prenume_medic:prenume,
-            nume_pacient:pacientNume,
-            prenume_pacient:pacientPrenume,
-            start_date:formatedDateSQLstart_date,
-            end_date:formatedDateSQLend_date
-        }).then(res=>console.log(res.data))
+        if(userType?.user_type==='admin'){
+            const splitName=selectSpecialist.split(' ');
+            const nume=splitName[0];
+            const prenume=splitName[1];
+            
+            axios.post('https://powerful-brushlands-81010.herokuapp.com/make-appointment',{
+                title:savedDate[0].title,
+                status:"active",
+                nume_medic:nume,
+                prenume_medic:prenume,
+                nume_pacient:pacientNume,
+                prenume_pacient:pacientPrenume,
+                start_date:formatedDateSQLstart_date,
+                end_date:formatedDateSQLend_date
+            }).then(res=>console.log("response from serv",res.data))
+        }else if(userType?.user_type==='pacient'){
+            const splitName=selectSpecialist.split(' ');
+            const nume=splitName[0];
+            const prenume=splitName[1];
+            axios.post('https://powerful-brushlands-81010.herokuapp.com/make-appointment',{
+                title:savedDate[0].title,
+                status:"active",
+                nume_medic:nume,
+                prenume_medic:prenume,
+                nume_pacient:userType.nume_pacient,
+                prenume_pacient:userType.prenume_pacient,
+                start_date:formatedDateSQLstart_date,
+                end_date:formatedDateSQLend_date
+            }).then(res=>console.log("response from serv",res.data))
+        }
+       
     }
 
     useEffect(()=>{
-        console.log("user_type",userType.user_type)
         setPacientNume(userType.nume_pacient);
         setpacientPrenume(userType.prenume_pacient)
     },[])
@@ -189,12 +206,43 @@ function NewAppointment() {
                         <div className="field-body">
                             <div className="field is-narrow">
                                 <div className="control">
-                                <button className="button" onClick={()=>handleDatePick()}>
+                                    {selectedServices.length>0?
+                                    <button className="button" onClick={()=>handleDatePick()}>
                                     <span className="icon">
                                     <i className="fas fa-calendar-alt"></i>
                                     </span>
                                     <span>click me</span>
+                                </button>:
+                                <button className="button is-warning" onClick={()=>handleDatePick()} disabled>
+                                    <span className="icon">
+                                    <i className="fas fa-calendar-alt"></i>
+                                    </span>
+                                    <span>select service...</span>
                                 </button>
+                                }
+                                
+                                {calendarisOpened  && 
+                                        <div className="py-5">  
+                                                {idSpecialist? <SelectDate chosenDate={setSelectedDate} idSpecialist={idSpecialist}/>:
+                                                <>loading... </>
+                                                
+                                            }
+                                            <div className="my-4">
+                                            {selectedDate.length>0 ?
+                                                <button className="button is-success" onClick={()=>{
+                                                        selectedDate.length>0 && setSavedDate(selectedDate);
+                                                        setcalendarisOpened(!calendarisOpened);
+                                                        }}>Save changes</button>:
+                                                <button className="button is-warning" onClick={()=>{
+                                                    selectedDate.length>0 && setSavedDate(selectedDate);
+                                                    setcalendarisOpened(!calendarisOpened);
+                                                    }} disabled>Select date</button>
+                                            }
+                                            <button className="button mx-3" onClick={()=>setcalendarisOpened(!calendarisOpened)}>Cancel</button>
+                                            </div>
+                                            <button className="modal-close is-large" aria-label="close" onClick={()=>setcalendarisOpened(!calendarisOpened)}></button>
+                                        </div>  
+                                } 
                                 </div>
                             </div>
                         </div>
@@ -282,32 +330,7 @@ function NewAppointment() {
                 </div>
             </p>          
             </p>
-            {calendarisOpened  && 
-                    <div className="modal is-active">
-                        <div className="modal-background"></div>
-                        <div className="modal-card">
-                            <header className="modal-card-head">
-                                <p className="modal-card-title">Select one free window</p>
-                                
-                            </header>
-                            <section className="modal-card-body">
-                            {idSpecialist? <SelectDate chosenDate={setSelectedDate} idSpecialist={idSpecialist}/>:
-                            <>loading </>
-                            
-                        }
-                            </section>
-                            <footer className="modal-card-foot">
-                                <button className="button is-success" onClick={()=>{
-                                    selectedDate.length>0 && setSavedDate(selectedDate);
-                                    setcalendarisOpened(!calendarisOpened);
-                                    }}>Save changes</button>
-                                <button className="button" onClick={()=>setcalendarisOpened(!calendarisOpened)}>Cancel</button>
-                            </footer>
-                            
-                        </div>
-                        <button className="modal-close is-large" aria-label="close" onClick={()=>setcalendarisOpened(!calendarisOpened)}></button>
-                    </div>  
-            } 
+            
         </article>
     )
 }

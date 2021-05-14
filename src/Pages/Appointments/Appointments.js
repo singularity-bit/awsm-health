@@ -29,22 +29,64 @@ function Appointment(props) {
                     params:{
                         id:user[0]?.id
                     }
-                })).then(result=>{
-                    console.log("appoinments",result.data)
-                    setData(result.data)})
+                })).then(res=>{
+                    const appointment=res.data.map(item=>{
+                        const {id,nume_medic,prenume_medic,nume_pacient,prenume_pacient,title,start_date,end_date,status}=item
+                        return {
+                            id:id ,
+                            nume_pacient: nume_medic,
+                            prenume_medic: prenume_medic,
+                            nume_pacient: nume_pacient,
+                            prenume_pacient: prenume_pacient,
+                            title: title,
+                            startDate: start_date,
+                            endDate: end_date,
+                            status: status
+                        }
+                    })
+                    console.log("appoinments",appointment)
+                    setData(appointment)})
             }else if(user[0]?.user_type==='pacient'){
                 axios.get('https://powerful-brushlands-81010.herokuapp.com/upcoming-pacient-appoinments',({
                     params:{
                         id:user[0]?.id
                     }
-                })).then(result=>{
-                    console.log("appoinments",result.data)
-                    setData(result.data)})
+                })).then(res=>{
+                    const appointment=res.data.map(item=>{
+                        const {id,nume_medic,prenume_medic,nume_pacient,prenume_pacient,title,start_date,end_date,status}=item
+                        return {
+                            id:id ,
+                            nume_pacient: nume_medic,
+                            prenume_medic: prenume_medic,
+                            nume_pacient: nume_pacient,
+                            prenume_pacient: prenume_pacient,
+                            title: title,
+                            startDate: start_date,
+                            endDate: end_date,
+                            status: status
+                        }
+                    })
+                    console.log("appoinments",res.data)
+                    setData(appointment)})
             }
         }else{
-            axios.get('https://powerful-brushlands-81010.herokuapp.com/appoinments').then(result=>{
-                console.log("appoinments",result.data)
-                setData(result.data)})
+            axios.get('https://powerful-brushlands-81010.herokuapp.com/appoinments').then(res=>{
+                console.log("appoinments",res.data)
+                const appointment=res.data.map(item=>{
+                    const {id,nume_medic,prenume_medic,nume_pacient,prenume_pacient,title,start_date,end_date,status}=item
+                    return {
+                        id:id ,
+                        nume_pacient: nume_medic,
+                        prenume_medic: prenume_medic,
+                        nume_pacient: nume_pacient,
+                        prenume_pacient: prenume_pacient,
+                        title: title,
+                        startDate: start_date,
+                        endDate: end_date,
+                        status: status
+                    }
+                })
+                setData(appointment)})
         }
         
        

@@ -21,7 +21,7 @@ function MainView(props) {
                 </aside>       
             <div className="column">
             <UserContext.Provider value={userType}>
-                    <TopNavigation/>
+                    <TopNavigation />
                     <Routes isSignedIn={props.isSignedIn}/>
             </UserContext.Provider>
             </div>

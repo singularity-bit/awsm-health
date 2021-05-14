@@ -1,14 +1,24 @@
-import React,{useContext} from 'react';
+import React,{useContext,useEffect,useState} from 'react';
 import './Statistics.css';
 import {Link} from 'react-router-dom'
 import Chart from './Chart'
+import axios from 'axios'
 import UpcomingAppointmentsWidget from './UpcomingAppointments/UpcomingAppointmentsWidget'
 import {UserContext} from '../../UserContext'
 
 
 function Statistics(props) {
     const userType=useContext(UserContext)
-    const {nrOfSpecialists,nrOfVisits,nrOfPatients,nrOfAppointments}=props;
+    const [nrOfSpecialists,setSpecialist]=useState('')
+    const [nrOfVisits,setVisits]=useState('')
+    const [nrOfPatients,setPatients]=useState('')
+
+
+    useEffect(()=>{
+        axios.get(`https://powerful-brushlands-81010.herokuapp.com/total-specialists`).then(res=>{setSpecialist(res.data[0].count)});
+        axios.get(`https://powerful-brushlands-81010.herokuapp.com/finished-appointments`).then(res=>{setVisits(res.data[0].count)});
+        axios.get(`https://powerful-brushlands-81010.herokuapp.com/total-pacienti`).then(res=>{setPatients(res.data[0].count)});
+    },[])
     return (
         <div>
             
@@ -17,7 +27,7 @@ function Statistics(props) {
                     <h4 class="title is-4 has-text-grey-dark">Overview</h4>
                     {userType.user_type==='pacient' | userType.user_type==='admin' ?
                         <Link to='/new-appointment'>
-                            <button className="button has-background-success has-text-primary-light has-text-weight-medium  ">New appointment</button>
+                            <button className="button has-background-success has-text-primary-light has-text-weight-medium  is-medium is-hovered">New appointment</button>
                         </Link>
                         :
                         <></>
@@ -53,10 +63,10 @@ function Statistics(props) {
                                     </div>
                                     
                             </div>
-                            <div className='tile'>
+                            <div className='tile is-hidden-touch'>
                                 <div className='tile is-parent '>
                                     <article className='tile is-child box'>
-                                        <div className="chart">
+                                        <div className="chart ">
                                             <Chart/>
                                         </div>
                                     </article>

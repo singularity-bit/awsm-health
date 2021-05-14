@@ -13,4 +13,8 @@
     width: 100%;
     height: auto;
 }
+.button.has-background-success.has-text-primary-light.has-text-weight-medium.is-medium.is-hovered{
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+}
 

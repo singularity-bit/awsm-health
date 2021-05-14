@@ -6,7 +6,7 @@ import React, {useState,useEffect,useContext} from 'react';
 import Login from './Pages/Signin/Login/Login';
 import Register from './Pages/Signin/Register/Register';
 import MainView from './MainView';
-import {UserContext} from  './UserContext'
+import {UserContext,isAuth} from  './UserContext'
 
 
 
@@ -31,7 +31,10 @@ function App() {
           isSignedIn &route==='/'
           ?
           <UserContext.Provider value={userType}>
-            <MainView onRouteChange={(argument)=>onRouteChange(argument)} isSignedIn={isSignedIn}/>
+            <isAuth.Provider value={{isSignedIn,setSignedIn}}>
+              <MainView onRouteChange={(argument)=>onRouteChange(argument)} isSignedIn={isSignedIn}/>
+            </isAuth.Provider>
+            
           </UserContext.Provider>
               
             

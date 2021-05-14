@@ -1,10 +1,7 @@
 .column.is-one-quarter{
     
 }
-.block:hover{
-    transition: all 0.3s ease-out;
-    transform: translateY(-5px) scale(1.005) translateZ(0);
-}
+
 
 .avatar{
     width: auto;

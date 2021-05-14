@@ -39,13 +39,36 @@ export default function SelectDate(props) {
             id:idSpecialist
         }
     })).then(res=> {
-        console.log("id",idSpecialist)
-        setData(res.data)});
+        const appointment=res.data.map(item=>{
+            const {id,nume_medic,prenume_medic,nume_pacient,prenume_pacient,title,start_date,end_date,status}=item
+            return {
+                id:id ,
+                nume_pacient: nume_medic,
+                prenume_medic: prenume_medic,
+                nume_pacient: nume_pacient,
+                prenume_pacient: prenume_pacient,
+                title: title,
+                startDate: start_date,
+                endDate: end_date,
+                status: status
+            }
+        })
+        console.log("appoinments",appointment)
+        setData(appointment)})
         
 },[])
 
     React.useEffect(()=>{
-        chosenDate(newData);
+        const appointment=newData.map(item=>{
+            console.log("new data:",item)
+            const {title,startDate,endDate}=item
+               return {
+                title: title,
+                start_date: startDate,
+                end_date: endDate
+            }
+        })
+        chosenDate(appointment);
     },[newData])
 
     const onCommitChanges = React.useCallback(({ added, changed, deleted }) => {
@@ -73,7 +96,8 @@ export default function SelectDate(props) {
     const TimeTableCell = React.useCallback(React.memo(({ onDoubleClick, ...restProps }) => (
         <WeekView.TimeTableCell
         {...restProps}
-        onDoubleClick={allowAdding ? onDoubleClick : undefined}
+        onClick={allowAdding ? onDoubleClick : undefined}
+        
         />
     )), [allowAdding]);
 
@@ -89,10 +113,12 @@ export default function SelectDate(props) {
             data.length>0?
             <React.Fragment>
         
-        <Paper>
             <Scheduler
             data={data}
-            height={600}
+            height={590}
+            width={300}
+            adaptivityEnabled={true}
+            cellDuration={20}
             >
             <ViewState
                 defaultCurrentDate={currentDate}
@@ -126,7 +152,6 @@ export default function SelectDate(props) {
             />
 
             </Scheduler>
-        </Paper>
         </React.Fragment>
         :<>loading ..</>
         

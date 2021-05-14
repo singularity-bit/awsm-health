@@ -8,7 +8,7 @@ function SelectSpecialist(props) {
     
 
     const specialistList=activeSpecialists.length>0 && activeSpecialists.map((item,index)=>{
-        return <option key={index} value={item.nume_medic}>{item.nume_medic} {item.prenume_medic}</option>;
+        return <option key={index} value={`${item.nume_medic} ${item.prenume_medic}`}>{item.nume_medic} {item.prenume_medic}</option>;
     })
 
     
