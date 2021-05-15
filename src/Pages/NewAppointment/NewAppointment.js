@@ -54,6 +54,8 @@ function NewAppointment() {
                 prenume_medic:prenume,
                 nume_pacient:pacientNume,
                 prenume_pacient:pacientPrenume,
+                selectedServices:selectedServices,
+                totalPrice:totalPrice,
                 start_date:formatedDateSQLstart_date,
                 end_date:formatedDateSQLend_date
             }).then(res=>{
@@ -71,9 +73,12 @@ function NewAppointment() {
                 nume_medic:nume,
                 prenume_medic:prenume,
                 id_pacient:userType.id,
+                selectedServices:selectedServices,
+                totalPrice:totalPrice,
                 start_date:formatedDateSQLstart_date,
                 end_date:formatedDateSQLend_date
             }).then(res=>{
+                console.log("selected services",selectedServices)
                 if(res.status>=200& res.status<300){
                     history.push("/");
                 }

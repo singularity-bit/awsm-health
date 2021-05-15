@@ -37,7 +37,7 @@ function Sidebar() {
         }else setMobile(false)
         
     },[windowSize.width]);
-    const activeStyle='has-background-info-light';
+    const activeStyle='is-active';
     const defaultStyle='';
 
     const [activeClass,setActiveClass]=useState(defaultStyle);
@@ -116,14 +116,13 @@ function Sidebar() {
                                         activateClass(activeStyle);
                                         item.className=activeClass;
                                         }}
-                                        
                                 >
                                     <Link to={item.path} key={index}                               
                                             className={isSelected && item.className} 
                                         >
                                             <span className="icon-text ">
                                             <span className="icon pl-4">
-                                                <div>
+                                                <div className="m-0">
                                                     {item.icon}
                                                 </div>
                                             </span>
@@ -137,7 +136,7 @@ function Sidebar() {
     return (
         <>
             
-            <ul className={!isMobile?"menu-list":"pt-6 is-flex is-flex-direction-row is-justify-content-space-around"}>
+            <ul className={!isMobile?"menu-list":"pt-6 is-flex is-justify-content-center"} style={{display: 'block'}}>
                 {menuItems}
             </ul>
             
