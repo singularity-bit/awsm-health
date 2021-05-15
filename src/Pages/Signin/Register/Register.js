@@ -89,7 +89,8 @@ function Register(props){
         }
     }
 
-    const onRegister=()=>{
+    const onRegister=(e)=>{
+        e.preventDefault();
         username.length>0 &
         numeIsValid &
         prenumeIsValid &
@@ -289,7 +290,7 @@ function Register(props){
                                     </div>
                                     <div className="field">
                                         <div className="control">
-                                            <button className="button is-block is-fullwidth is-primary mgt-small mx-0" onClick={()=>onRegister()}>
+                                            <button className="button is-block is-fullwidth is-primary mgt-small mx-0" onClick={(e)=>onRegister(e)}>
                                             Register
                                             </button>
                                         </div>
