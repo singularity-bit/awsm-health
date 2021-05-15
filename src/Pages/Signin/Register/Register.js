@@ -103,7 +103,10 @@ function Register(props){
             tel_nr:phoneNr,
             email:signInEmail,
             password:signInPassword
-        }).then(res=>{res.status>200 & res.status<300 && setTargetRoute('login')})
+        }).then(res=>{
+            
+            setTargetRoute('login')
+        }).catch(err=>console.log(err))
     }
     useEffect(()=>{
         setcnp('')
