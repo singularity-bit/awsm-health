@@ -99,11 +99,10 @@ function Register(props){
             nume_pacient:nume,
             prenume_pacient:prenume,
             username:username,
-            user_type:'pacient',
             tel_nr:phoneNr,
             email:signInEmail,
             password:signInPassword
-        }).then(res=>{res.status===200 && setTargetRoute('login')})
+        }).then(res=>{res.status>200 & res.status<300 && setTargetRoute('login')})
     }
     useEffect(()=>{
         setcnp('')
