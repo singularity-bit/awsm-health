@@ -6,9 +6,7 @@ import { Link } from 'react-router-dom';
 function PacientCard(props) {
     //hooks
     const {data}=props;
-    useEffect(() =>{
-        console.log("data",data);
-    },[])
+
 
     const pacienti=data?.map((item)=>{
         const {prenume_pacient,nume_pacient,id}=item;

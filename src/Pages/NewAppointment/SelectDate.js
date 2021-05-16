@@ -1,6 +1,5 @@
 import * as React from 'react';
 import axios from 'axios'
-import Paper from '@material-ui/core/Paper';
 import { ViewState, EditingState, IntegratedEditing } from '@devexpress/dx-react-scheduler';
 import {
     Scheduler,
@@ -12,7 +11,6 @@ import {
     TodayButton,
     Toolbar,
 } from '@devexpress/dx-react-scheduler-material-ui';
-import {UserContext} from '../../UserContext'
 const currentDate = Date.now();
 
 export default function SelectDate(props) {
@@ -53,14 +51,14 @@ export default function SelectDate(props) {
                 status: status
             }
         })
-        console.log("appoinments",appointment)
+        
         setData(appointment)})
         
 },[])
 
     React.useEffect(()=>{
         const appointment=newData.map(item=>{
-            console.log("new data:",item)
+            
             const {title,startDate,endDate}=item
                return {
                 title: title,

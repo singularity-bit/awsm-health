@@ -23,7 +23,7 @@ function Login (props) {
             username:username,
             password:signInPassword
         }).then(result=>{
-            console.log("signin data",result.data)
+            
             if(result.data.id){
                 setUser(result.data)
                 setAuth(true)
@@ -35,7 +35,7 @@ function Login (props) {
                 setWrongData(true)
             }
             
-        }).catch(err=>console.log(err))
+        }).catch(err=>(err))
     }
       //update in main App user type
     useEffect(()=>{

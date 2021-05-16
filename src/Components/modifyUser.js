@@ -5,13 +5,13 @@ const modifyUser=(method,id,type)=>{
             id:id,
             type:type,
             method:method
-        }).then(res=>console.log(res))
+        }).then(res=>(res))
     }else if (method==='update'){
         axios.put('https://powerful-brushlands-81010.herokuapp.com/change-user',{
             id:id,
             type:type,
             method:method
-        }).then(res=>console.log(res))
+        }).then(res=>(res))
     }
 }
 export default modifyUser

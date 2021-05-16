@@ -17,13 +17,11 @@ function SpecialistProfile({match}) {
     useEffect(()=>{
         axios.get(`https://powerful-brushlands-81010.herokuapp.com/specialists/${match.params.id}`).then(res=>{
             setuserData(res.data); 
-            console.log("medici",res.data[0])
+            
         })
         
     },[])
-    useEffect(()=>{
-        console.log("enable input",enableInput)
-    },[enableInput])
+
 
     const toggleButtons=(value)=>{
         setEnableInput(value);
@@ -34,7 +32,7 @@ function SpecialistProfile({match}) {
             user_type:userData[0].user_type
         }})
             .then(res=>{
-            console.log(res);
+           
             redirect.push('/specialist');
             setmodal(!modal);
         })

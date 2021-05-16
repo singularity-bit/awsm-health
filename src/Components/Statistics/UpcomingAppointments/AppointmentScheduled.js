@@ -19,7 +19,7 @@ function AppointmentScheduled(props) {
     const [appointmentStatus, setappointmentStatus] = useState();
 
     useEffect(()=>{
-        console.log("change status",appointmentStatus)
+        
         //updates appoinment list with status of app
         appointmentStatus && axios.post('https://powerful-brushlands-81010.herokuapp.com/update-appointments',appointmentStatus).then(res=>result(res.data));
     },[appointmentStatus])

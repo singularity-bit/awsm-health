@@ -1,5 +1,5 @@
 import React,{useEffect,useState,useContext} from 'react'
-import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
+
 import Sidebar from './Components/Sidebar/Sidebar';
 import TopNavigation from './Components/TopNavigation/TopNavigation'
 import Routes from './Pages/Routes';

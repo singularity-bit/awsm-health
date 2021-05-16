@@ -1,6 +1,5 @@
 import React,{useContext,useState,useEffect} from 'react'
 import './NewAppointment.css'
-import {CategoryContext,SpecialistContext} from '../Specialist/CategoryContext'
 import SelectCategory from './SelectCategory'
 import SelectSpecialist from './SelectSpecialist'
 import SelectService from './SelectService'
@@ -78,7 +77,7 @@ function NewAppointment() {
                 start_date:formatedDateSQLstart_date,
                 end_date:formatedDateSQLend_date
             }).then(res=>{
-                console.log("selected services",selectedServices)
+                
                 if(res.status>=200& res.status<300){
                     history.push("/");
                 }

@@ -1,4 +1,4 @@
-import React,{useState,useEffect,useContext} from 'react'
+import React,{useState,useEffect} from 'react'
 import { ViewState } from '@devexpress/dx-react-scheduler';
 import {
     Scheduler,
@@ -10,15 +10,11 @@ import {
 } from '@devexpress/dx-react-scheduler-material-ui';
 import axios from 'axios';
 
-import {UserContext} from '../../UserContext'
-
-
 
 function Appointment(props) {
 
     const {user}=props
 
-    const [userData,setUserData]=useState('')
     const [data,setData]=useState('');
 
     useEffect(()=>{
@@ -44,7 +40,7 @@ function Appointment(props) {
                             status: status
                         }
                     })
-                    console.log("appoinments",appointment)
+                    
                     setData(appointment)})
             }else if(user[0]?.user_type==='pacient'){
                 axios.get('https://powerful-brushlands-81010.herokuapp.com/upcoming-pacient-appoinments',({
@@ -66,12 +62,11 @@ function Appointment(props) {
                             status: status
                         }
                     })
-                    console.log("appoinments",res.data)
+                    ("appoinments",res.data)
                     setData(appointment)})
             }
         }else{
             axios.get('https://powerful-brushlands-81010.herokuapp.com/appoinments').then(res=>{
-                console.log("appoinments",res.data)
                 const appointment=res.data.map(item=>{
                     const {id,nume_medic,prenume_medic,nume_pacient,prenume_pacient,title,start_date,end_date,status}=item
                     return {

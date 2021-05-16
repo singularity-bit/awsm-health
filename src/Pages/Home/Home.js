@@ -1,8 +1,5 @@
-import React,{useEffect,useState,useContext} from 'react'
-import Sidebar from '../../Components/Sidebar/Sidebar';
-import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
+import React from 'react'
 import Statistics from '../../Components/Statistics/Statistics';
-import {UserContext} from '../../UserContext'
 
 const data={
     nrOfSpecialists:45,
@@ -20,12 +17,7 @@ function Home() {
                 nrOfVisits={nrOfVisits}
                 nrOfPatients={nrOfPatients}
                 nrOfAppointments={nrOfAppointments}               
-            />
-            
-            
-            
-
-            
+            />        
     </div>
     )
 }

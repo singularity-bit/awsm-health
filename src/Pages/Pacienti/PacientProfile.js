@@ -27,7 +27,7 @@ function PacientProfile({match}) {
             user_type:userData[0].user_type
         }})
             .then(res=>{
-            console.log(res);
+          
             redirect.push('/patients');
             setmodal(!modal);
         })

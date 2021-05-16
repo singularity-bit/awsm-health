@@ -28,7 +28,7 @@ useEffect(()=>{
             setAppointments(result.data)})
     }else{
         axios.get('https://powerful-brushlands-81010.herokuapp.com/upcoming-appoinments').then(result=>{
-            console.log("appoinments",result.data)
+            
             setAppointments(result.data)})
     }
     
@@ -50,7 +50,7 @@ useEffect(()=>{
             setAppointments(result.data)})
     }else{
         axios.get('https://powerful-brushlands-81010.herokuapp.com/upcoming-appoinments').then(result=>{
-            console.log("appoinments",result.data)
+           
             setAppointments(result.data)})
     }
     

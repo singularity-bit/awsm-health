@@ -1,7 +1,7 @@
 
 import 'bulma/css/bulma.css';
 import './App.css';
-import React, {useState,useEffect,useContext} from 'react';
+import React, {useState} from 'react';
 
 import Login from './Pages/Signin/Login/Login';
 import Register from './Pages/Signin/Register/Register';
@@ -21,10 +21,6 @@ function App() {
     setRoute(argument);
   }
 
-
-  useEffect(()=>{
-    console.log("signed",isSignedIn)
-  },[isSignedIn])
     return (
       <div className="App ">
         {

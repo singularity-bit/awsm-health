@@ -10,7 +10,7 @@ function SelectService(props) {
     useEffect(()=>{
 
         axios.get(`https://powerful-brushlands-81010.herokuapp.com/services-by-category/${category}`).then(res=>{
-            console.log("services",[...res.data])    
+          
             setactiveService(res.data)
         });
     },[category])
@@ -26,7 +26,7 @@ function SelectService(props) {
         })
         price(sum);
         selectService(selectServices) 
-        console.log("selected service",selectServices)
+        
     },[selectServices])
 
     useEffect(()=>{
@@ -48,7 +48,7 @@ function SelectService(props) {
 
         //gets item from original array
         const substractResult=servicesCopy.find(item=>item.service_name===e);
-        console.log("mutate result",substractResult)
+        
 
         result===undefined ?setselectServices([...selectServices,substractResult]):
         setselectServices(selectServices.filter(item=> item.service_name!==e))       

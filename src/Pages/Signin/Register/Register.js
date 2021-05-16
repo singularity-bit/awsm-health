@@ -106,7 +106,7 @@ function Register(props){
         }).then(res=>{
             
             setTargetRoute('login')
-        }).catch(err=>console.log(err))
+        }).catch(err=>(err))
     }
     useEffect(()=>{
         setcnp('')

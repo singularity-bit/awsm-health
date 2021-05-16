@@ -1,15 +1,13 @@
-import React,{useContext,useEffect} from 'react'
+import React,{useContext} from 'react'
 import './TopNavigation.css';
 import {UserContext,isAuth} from '../../UserContext'
-import {Link,BrowserRouter,Redirect} from 'react-router-dom';
+
 
 export default function TopNavigation(props) {
     const userType=useContext(UserContext)
     const {isSignedIn,setSignedIn}=useContext(isAuth)
 
-    useEffect(()=>{
-        console.log("usertype",userType)
-    },[])
+
     return (
         <nav className="navbar my-4 px-6">
             <div className='navbar-menu '>

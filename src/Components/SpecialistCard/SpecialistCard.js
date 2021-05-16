@@ -1,7 +1,6 @@
-import React, { useState,useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom';
 import './SpecialistCard.css'
-import {UserContext} from '../../UserContext'
 function SpecialistCard(props) {
 
     //hooks

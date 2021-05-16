@@ -17,11 +17,6 @@ function PacientData(props) {
         setupdatedData(JSON.stringify(userData))
     },[])
     
-    useEffect(() => {
-
-        console.log("personal info",input)
-
-    }, [input])
     
     const onSave=()=>{
         const fullname=input.name.split(' ');
@@ -34,7 +29,6 @@ function PacientData(props) {
             tel_nr:input.tel_nr,
             email:input.email,
         }).then(res=>{
-            console.log(res);
             toggler(!enableInput)
         })
     }

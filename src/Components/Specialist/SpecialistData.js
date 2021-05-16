@@ -19,7 +19,7 @@ function SpecialistData(props) {
         axios.get(`https://powerful-brushlands-81010.herokuapp.com/medic-services/${userData[0].id}`)
         .then(result=>{
             setServicii(result.data);
-            console.log("servicii",result.data);
+           
         });
     },[])
     //servicii
@@ -36,7 +36,7 @@ function SpecialistData(props) {
             tel_nr:input.tel_nr,
             email:input.email,
         }).then(res=>{
-            console.log(res);
+            
             toggler(!enableInput)
         })
     }
@@ -113,14 +113,14 @@ function SpecialistData(props) {
         <div>
             <div className="tabs">
                 <ul>
-                    <li onClick={()=>setActiveTab('info')} className={activeTab=='info'?"is-active":""}><a>Personal info</a></li>
-                    <li onClick={()=>setActiveTab('price')} className={activeTab=='price'?"is-active":""}><a>Preturi</a></li>
+                    <li onClick={()=>setActiveTab('info')} className={activeTab==='info'?"is-active":""}><a>Personal info</a></li>
+                    <li onClick={()=>setActiveTab('price')} className={activeTab==='price'?"is-active":""}><a>Preturi</a></li>
 
                 </ul>
             </div>
 
             <table className="table">
-                { activeTab=='info'?personalInfoList():<tbody>{serviceList}</tbody>}
+                { activeTab==='info'?personalInfoList():<tbody>{serviceList}</tbody>}
             </table>
             {enableInput && 
                 <div class="buttons">

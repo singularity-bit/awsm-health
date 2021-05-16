@@ -75,7 +75,7 @@ function NewAppointmentTab(props) {
                 start_date:formatedDateSQLstart_date,
                 end_date:formatedDateSQLend_date
             }).then(res=>{
-                console.log("selected services",selectedServices)
+                
                 if(res.status>=200& res.status<300){
                     history.push("/");
                 }
