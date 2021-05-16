@@ -59,7 +59,7 @@ function AppointmentScheduled(props) {
                         <div className="container">
                             <a className="is-pulled-right pl-5 has-text-danger" onClick={()=>onchangeStatus(id,'canceled')}><i class="far fa-calendar-times fa-2x "></i></a>
                             
-                            {userType.user_type==='admin'&&
+                            {userType.user_type==='admin' | userType.user_type==='medic' &&
                                 <a className="is-pulled-right pr-5 has-text-success" onClick={()=>onchangeStatus(id,'finished')}><i class="fas fa-check fa-2x"></i></a>}                               
                         </div>
                         
