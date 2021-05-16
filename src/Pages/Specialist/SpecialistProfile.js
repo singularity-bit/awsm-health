@@ -4,6 +4,7 @@ import './SpecialistProfile.css'
 import SpecialistData from '../../Components/Specialist/SpecialistData'
 import {UserContext} from '../../UserContext'
 import Appointments from '../Appointments/Appointments'
+import NewAppointmentTab from './NewAppointmentTab'
 import axios from 'axios'
 function SpecialistProfile({match}) {
     const userType=useContext(UserContext)
@@ -16,7 +17,7 @@ function SpecialistProfile({match}) {
     useEffect(()=>{
         axios.get(`https://powerful-brushlands-81010.herokuapp.com/specialists/${match.params.id}`).then(res=>{
             setuserData(res.data); 
-            console.log("medici",userData)
+            console.log("medici",res.data[0])
         })
         
     },[])
@@ -99,6 +100,10 @@ function SpecialistProfile({match}) {
                     }
                     {
                         activeTab=='appointments' && <Appointments user={userData}/>
+                    }
+                    {
+                        activeTab=='app' & userData.length>0 ? <NewAppointmentTab userData={userData[0]}/>:
+                        <>data is loading...</>
                     }
                                     
                 </div>
