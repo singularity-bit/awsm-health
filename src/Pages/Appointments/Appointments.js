@@ -62,7 +62,6 @@ function Appointment(props) {
                             status: status
                         }
                     })
-                    ("appoinments",res.data)
                     setData(appointment)})
             }
         }else{
@@ -99,7 +98,7 @@ function Appointment(props) {
                     <Appointments />
                 </Scheduler>
                 :
-                <>data is loading...</>
+                <>this user has no appointments</>
             }
             
         </>

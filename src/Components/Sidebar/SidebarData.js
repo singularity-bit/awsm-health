@@ -31,4 +31,10 @@ export const SidebarData=[
         icon:<i className="fas fa-calendar-alt pr-5"/>,
         className:'pl-4'
     },
+    {
+        title:'My Appointments',
+        path:'/records',
+        icon:<i className="fas fa-history pr-5"/>,
+        className:'pl-4'
+    }
 ]

@@ -108,28 +108,31 @@ function Sidebar() {
                                 ) 
                             }
                         }else{
-                            return(
-                                <li key={index} 
-                                    onClick={()=>{
-                                        clickMenuHandler(item.title);
-                                        activateClass(activeStyle);
-                                        item.className=activeClass;
-                                        }}
-                                >
-                                    <Link to={item.path} key={index}                               
-                                            className={isSelected && item.className} 
-                                        >
-                                            <span className="icon-text ">
-                                            <span className="icon pl-4">
-                                                <div className="m-0">
-                                                    {item.icon}
-                                                </div>
-                                            </span>
-                                                <p className='is-hidden-touch'>{item.title}</p>
-                                            </span>           
-                                    </Link>                    
-                                </li>      
-                            ) 
+                            if(item.title!=='My Appointments'){
+                                return(
+                                    <li key={index} 
+                                        onClick={()=>{
+                                            clickMenuHandler(item.title);
+                                            activateClass(activeStyle);
+                                            item.className=activeClass;
+                                            }}
+                                    >
+                                        <Link to={item.path} key={index}                               
+                                                className={isSelected && item.className} 
+                                            >
+                                                <span className="icon-text ">
+                                                <span className="icon pl-4">
+                                                    <div className="m-0">
+                                                        {item.icon}
+                                                    </div>
+                                                </span>
+                                                    <p className='is-hidden-touch'>{item.title}</p>
+                                                </span>           
+                                        </Link>                    
+                                    </li>      
+                                ) 
+                            }
+                            
                         }
         })
     return (

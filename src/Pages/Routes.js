@@ -1,5 +1,5 @@
 import React,{useContext} from 'react';
-import {Switch,Route, BrowserRouter,Redirect} from 'react-router-dom';
+import {Switch,Route} from 'react-router-dom';
 
 //components
 import Home from './Home/Home'
@@ -14,6 +14,7 @@ import SpecialistProfile from './Specialist/SpecialistProfile'
 import Register from './Signin/Register/Register'
 import {UserContext} from '../UserContext'
 import NotFound from '../Components/NotFound/NotFound'
+import UserRecords from  '../Pages/UserRecords/UserRecords'
 
 const  Routes=(props)=>{
     const userType=useContext(UserContext)
@@ -42,7 +43,7 @@ const  Routes=(props)=>{
                         <Route path='/register' component={Register}/>
 
                         <Route path='/new-appointment' component={NewAppointment}/>
-                        
+                        <Route path='/records' component={UserRecords}/>
                         <Route path='/medic/:id'  component={SpecialistProfile}/>
                         <PrivateRoute path='/pacient/:id'  component={PacientProfile}/>        
             </Switch>

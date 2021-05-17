@@ -101,7 +101,7 @@ function SpecialistProfile({match}) {
                     }
                     {
                         activeTab=='app' & userData.length>0 ? <NewAppointmentTab userData={userData[0]}/>:
-                        <>data is loading...</>
+                        <></>
                     }
                                     
                 </div>
