@@ -57,6 +57,7 @@ useEffect(()=>{
 },[changedAppointments])       
 
     return (
+        appointments.length>0?
         <div className='container'>
             <nav className="panel is-info  mx-0">
                 <p className="panel-heading">
@@ -68,6 +69,8 @@ useEffect(()=>{
                 
             </nav>
         </div>
+        :
+        <></>
         
     )
 }

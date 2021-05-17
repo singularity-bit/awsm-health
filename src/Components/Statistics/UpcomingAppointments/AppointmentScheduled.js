@@ -39,11 +39,13 @@ function AppointmentScheduled(props) {
 
 
     const subMenu=(item)=>{
-        const{title,prenume_medic,nume_medic,start_date,id,total_price}=item;
+        const{title,prenume_medic,nume_medic,start_date,id,total_price,services}=item;
         const time=new Date(start_date).toLocaleTimeString(undefined, optionsHour)
+        const serviceList=services?.trim();
+        console.log("service list with trim ",serviceList)
         return (           
             <ul>
-                <li className="my-4 ">
+                <li className="my-4  ">
                     <div className="is-flex is-flex-wrap-wrap is-flex-direction-row is-align-content-stretch ">
                         <p className="menu-label is-size-4 has-text-weight-bold has-text-grey-darker pr-3">
                             {time}
@@ -52,15 +54,33 @@ function AppointmentScheduled(props) {
                             <p className="is-size-6 has-text-weight-normal has-text-grey-light">{title}</p>
                             <p className="is-size-6 has-text-weight-bold has-text-grey-darker">{prenume_medic} {nume_medic}</p>
                         </div>
-
-                        <p className="menu-label is-size-5 has-text-weight-bold px-4 mx-5 mt-0">
+                        <div className="is-flex is-flex-direction-column pl-4 mb-5">
+                        {total_price>0?
+                            <p className="menu-label is-size-5 has-text-weight-bold px-4 mx-5 mt-0">
                             {total_price} lei
-                        </p>
+                        </p>:
+                        <></>
+                        } 
+                            
+                            <div class="tags">
+                                {
+                                    serviceList?.split(',').map((item,index)=>{
+                                        console.log("splited item",item)
+                                        if(item.length!=="") {
+                                            return  <span key={index} class="tag">{item}</span>
+                                        }
+                                    })
+                                }
+                            </div>
+                        </div>
+                        
                         <div className="container">
                             <a className="is-pulled-right pl-5 has-text-danger" onClick={()=>onchangeStatus(id,'canceled')}><i class="far fa-calendar-times fa-2x "></i></a>
                             
-                            {userType.user_type==='admin' | userType.user_type==='medic' &&
-                                <a className="is-pulled-right pr-5 has-text-success" onClick={()=>onchangeStatus(id,'finished')}><i class="fas fa-check fa-2x"></i></a>}                               
+                            {userType.user_type==='admin' | userType.user_type==='medic' ?
+                                <a className="is-pulled-right pr-5 has-text-success" onClick={()=>onchangeStatus(id,'finished')}><i class="fas fa-check fa-2x"></i></a>:
+                                <></>
+                            }                               
                         </div>
                         
                     </div>
