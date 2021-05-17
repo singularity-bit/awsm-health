@@ -21,6 +21,7 @@ function Register(props){
     const [numeIsValid, setnumeIsValid] = useState(false)
     const [prenumeIsValid, setprenumeIsValid] = useState(false)
 
+    const [registerMessage,setRegisterMessage]=useState('')
     const [submitIsvalid,setSubmitIsValid]=useState(false)
 
     //regex pt cnp
@@ -104,8 +105,13 @@ function Register(props){
             email:signInEmail,
             password:signInPassword
         }).then(res=>{
+            console.log("res",res.data)
+            if(res.data.status>=400){
+                setRegisterMessage(res.data.message)
+            }else{
+                setTargetRoute('login')
+            }
             
-            setTargetRoute('login')
         }).catch(err=>(err))
     }
     useEffect(()=>{
@@ -255,6 +261,13 @@ function Register(props){
                                                 <i className="fas fa-user"></i>
                                                 </span>
                                             </p>
+                                            {
+                                            registerMessage.length>0&&
+                                                            <p className="help is-danger">
+                                                                {registerMessage}
+                                                            </p>
+                                                        
+                                                    }
                                         </div>
 
                                         </div>
