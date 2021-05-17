@@ -105,6 +105,7 @@ function Register(props){
             email:signInEmail,
             password:signInPassword
         }).then(res=>{
+            e.preventDefault();
             console.log("res",res.data)
             if(res.data.status>=400){
                 setRegisterMessage(res.data.message)
