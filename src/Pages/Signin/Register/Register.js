@@ -12,7 +12,7 @@ function Register(props){
     const [phoneNr, setphoneNr] = useState()
     const [passRepeat, setpassRepeat] = useState()
     const [targetRoute,setTargetRoute]=useState('register');
-    const [username, setusername] = useState()
+    const [username, setusername] = useState('')
 
     const [cnpIsValid, setcnpIsValid] = useState(false)
     const [emailIsValid, setemailIsValid] = useState(false)
