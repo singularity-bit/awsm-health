@@ -95,7 +95,9 @@ function Register(props){
         username.length>0 &
         numeIsValid &
         prenumeIsValid &
-        passwordIsValid &&
+        passwordIsValid  &
+        emailIsValid &
+        cnpIsValid &&
         axios.post('https://powerful-brushlands-81010.herokuapp.com/register',{
             cnp_pacient:cnp,
             nume_pacient:nume,
@@ -307,9 +309,15 @@ function Register(props){
                                     </div>
                                     <div className="field">
                                         <div className="control">
+                                            {
+                                                username.length>0 &numeIsValid &prenumeIsValid &passwordIsValid  &emailIsValid &cnpIsValid?
                                             <button className="button is-block is-fullwidth is-primary mgt-small mx-0" onClick={(e)=>onRegister(e)}>
                                             Register
+                                            </button>:
+                                            <button className="button is-block is-fullwidth is-warning mgt-small mx-0" disabled>
+                                            Please fill all the fields accordingly
                                             </button>
+                                            }
                                         </div>
                                     </div>
                             </form>            
