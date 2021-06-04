@@ -32,7 +32,7 @@ useEffect(()=>{
         })).then(result=>{
             setupcominAppointments(result.data)})
 
-            axios.get('https://powerful-brushlands-81010.herokuapp.com/finished-medic-appoinments',({
+            axios.get('https://powerful-brushlands-81010.herokuapp.com/finished-medic-appointments',({
                 params:{
                     id:userType.id
                 }
